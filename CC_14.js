@@ -22,6 +22,30 @@ function addTicket(customerName, issueDescription, priorityLevel){
     const editButton = document.createElement(`button`)
     editButton.textContent = `Edit Ticket`;
     editButton.setAttribute(`class`, `edit-button`)
+
+    //Task 4 Support Ticket Resolution with Event Bubbling
+    resolveButton.addEventListener(`click`, function(event){
+        const nameInput = document.createElement(`input`);
+        nameInput.setAttribute(`type`, `text`);
+        nameInput.value = nameHeading.textContent
+
+        const issueInput = document.createElement(`input`);
+        issueInput.setAttribute(`type`, `text`);
+        issueInput.value = issueText.textContent;
+
+        const priorityInput = document.createElement(`input`);
+        priorityInput.setAttribute(`type`, `text`);
+        priorityInput.value = priorityState.textContent.split(": ")[1]
+    })
+    
+    //Section for element tickets
+
+    ticket.appendChild(nameHeading);
+    ticket.appendChild(issueText);
+    ticket.appendChild(priorityState);
+    ticket.appendChild(resolveButton);
+    ticket.appendChild(editButton);
+    ticketContainer.appendChild(ticket);
 }
 //Task 3 Highlighting High Priority Tickets
 //function to highlight tickets
