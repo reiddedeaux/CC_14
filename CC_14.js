@@ -46,6 +46,46 @@ function addTicket(customerName, issueDescription, priorityLevel){
     ticket.appendChild(resolveButton);
     ticket.appendChild(editButton);
     ticketContainer.appendChild(ticket);
+
+    //Task 5 Inline Editing for Support Tickets
+    ticket.addEventListener(`dblclick`, function(){
+        const nameInput = document.createElement(`input`);
+        nameInput.setAttribute(`type`,`text`);
+        nameInput.value = nameHeading.textContent;
+
+        const issueInput = document.createElement(`input`);
+        issueInput.setAttribute(`type`,`text`);
+        issueInput.value = issueText.textContent;
+
+        const priorityInput = document.createElement(`input`);
+        priorityInput.setAttribute(`type`,`text`);
+        priorityInput.value = priorityState.textContent.split(": ")[1];
+        //save button
+        const saveButton = document.createElement(`button`);
+        saveButton.textContent = `Save`;
+        //clear content
+        ticket.innerHTML = ``;
+        //append again
+        ticket.appendChild(nameInput);
+        ticket.appendChild(issueInput);
+        ticket.appendChild(priorityInput);
+        ticket.appendChild(saveButton);
+
+        saveButton.addEventListener(`click`, function(){ //save button
+            //new values
+            nameHeading.textContent = nameInput.value;
+            issueText.textContent = issueInput.value;
+            priorityState.textContent = `Priority : ${priorityInput.value}`;
+            priorityState.setAttribute(`class`, priorityInput.value.toLowerCase());
+            //revert back fields to static texts
+            ticket.innerHTML = ``;
+            ticket.appendChild(nameHeading);
+            ticket.appendChild(issueText);
+            ticket.appendChild(priorityState);
+            ticket.appendChild(resolveButton);
+            ticket.appendChild(editButton);
+        })
+    })
 }
 //Task 3 Highlighting High Priority Tickets
 //function to highlight tickets
