@@ -1,7 +1,7 @@
 // Task 2 Support Tickets Dynamic Addition
 function addTicket(customerName, issueDescription, priorityLevel){
     const ticketContainer = document.getElementById(`ticketContainer`);
-    
+
     const ticket = document.createElement(`div`);
     ticket.setAttribute(`class`, `ticket`);
     //for the customers name
@@ -23,3 +23,23 @@ function addTicket(customerName, issueDescription, priorityLevel){
     editButton.textContent = `Edit Ticket`;
     editButton.setAttribute(`class`, `edit-button`)
 }
+//Task 3 Highlighting High Priority Tickets
+//function to highlight tickets
+function highlightingHighPriorityTickets(){
+    const highlightingHighPriorityTickets = document.querySelectorAll(`.high`);
+    const highPriorityArray = Array.from(highlightingHighPriorityTickets);
+
+    highPriorityArray.forEach(ticket => {
+        ticket.style.backgroundColor = `yellow`; // highlight color
+        ticket.style.border = `2px solid green`;// border
+    });
+}
+highlightingHighPriorityTickets()
+
+const ticketContainer = document.getElementById(`ticketContainer`);
+ticketContainer.addEventListener(`click`, function(){
+    console.log(`Ricket Was Clicked`)
+});
+//Examples of tickets
+addTicket(`James Harden`, `Cannot Delete Account`, `High`);
+addTicket(`Jonny Test`, `Page Not Showing`, `Low`);
